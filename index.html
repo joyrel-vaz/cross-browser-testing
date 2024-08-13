@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/bowser@2.11.0/es5.js"></script>
+    <title>Cross-Browser Testing</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+        }
+        .container {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 20px;
+        }
+
+        .box {
+            padding: 20px;
+            background-color:darkseagreen;
+            text-align: center;
+            font-weight: bold;
+            font-size: xx-large;
+            font-family: Arial, sans-serif;
+            border: 1px solid #000;
+            padding: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="js-test">
+            Default JavaScript Text
+        </div>
+    </div>
+
+    <script>
+        var jsTestBox = document.getElementById("js-test");
+        var browser = bowser.getParser(window.navigator.userAgent)
+        jsTestBox.textContent = 'You are using browser: ' + browser.getBrowserName()
+    </script>
+</body>
+</html>
