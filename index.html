@@ -95,6 +95,12 @@
             };
         }
 
+        function getRandomPosition(shapeSize, viewportWidth, viewportHeight) {
+            return {
+                top: Math.floor(Math.random() * (viewportHeight - shapeSize)) + 'px',
+                left: Math.floor(Math.random() * (viewportWidth - shapeSize)) + 'px',
+            };
+        }
         function createRandomShape(shape) {
             const size = 300;
             shape.style.width = size + 'px';
@@ -102,7 +108,7 @@
             shape.style.backgroundColor = getRandomColor();
             shape.style.borderRadius = Math.random() > 0.5 ? '50%' : '0'; // Circle or Square
             shape.style.position = 'absolute';
-            const position = getRandomPosition();
+            const position = getRandomPosition(size, window.innerWidth, window.innerHeight);
             shape.style.top = position.top;
             shape.style.left = position.left;
         }
