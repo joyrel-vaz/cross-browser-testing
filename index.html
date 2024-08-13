@@ -51,6 +51,7 @@
             align-items: center;
             text-align: center; 
         }
+
     </style>
 </head>
 <body>
@@ -78,12 +79,42 @@
             }
         }
 
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function getRandomPosition() {
+            return {
+                top: Math.floor(Math.random() * window.innerHeight) + 'px',
+                left: Math.floor(Math.random() * window.innerWidth) + 'px',
+            };
+        }
+
+        function createRandomShape(shape) {
+            const size = 300;
+            shape.style.width = size + 'px';
+            shape.style.height = size + 'px';
+            shape.style.backgroundColor = getRandomColor();
+            shape.style.borderRadius = Math.random() > 0.5 ? '50%' : '0'; // Circle or Square
+            shape.style.position = 'absolute';
+            const position = getRandomPosition();
+            shape.style.top = position.top;
+            shape.style.left = position.left;
+        }
+
+
         var jsTestBox = document.getElementById("js-test");
         var browser = bowser.getParser(window.navigator.userAgent)
         browserName = browser.getBrowserName()
         jsTestBox.textContent = `Found browser: ${browserName}`
         var browserNameElement = document.getElementById(getBrowserId(browserName));
         browserNameElement.style.display = "grid";
+        createRandomShape(browserNameElement)
     </script>
 </body>
 </html>
